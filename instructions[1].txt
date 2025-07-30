@@ -1,0 +1,16 @@
+INSTRUCTIONS:
+
+1. Copy 'premium_template.html' to each HTML file in your project root.
+2. Replace placeholders:
+   - {{PAGE_TITLE}}, {{PAGE_DESCRIPTION}}
+   - {{OG_TITLE}}, {{OG_DESCRIPTION}}, {{OG_URL}}, {{OG_IMAGE}}
+   - {{SITE_DOMAIN}}, {{PHONE_NUMBER}}, {{STREET_ADDRESS}}, {{CITY}}, {{STATE}}, {{ZIP_CODE}}
+   - {{HERO_IMAGE}}, {{HERO_ALT}}, {{HERO_HEADING}}, {{HERO_SUBHEADING}}
+   - Replace {{PAGE_CONTENT}} with page-specific HTML (hero+mission+values for index; grid for gallery; hero+text for others).
+   - On 'index', the sections under {{#if page=='index'}} will render. For other pages, omit those.
+3. Ensure 'style.css', 'favicon.ico', and 'images/' folder are in your project root.
+4. Commit changes and redeploy.
+
+This template includes all head/meta tags, Open Graph, JSON-LD, global header/nav, mission & values for home, main content placeholder, and footer.
+
+Use this to ensure no detail from the Development Guide is missed.

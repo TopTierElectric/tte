@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{PAGE_DESCRIPTION}}"/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <link href="style.css" rel="stylesheet"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{OG_TITLE}}"/>
+  <meta property="og:description" content="{{OG_DESCRIPTION}}"/>
+  <meta property="og:url" content="{{OG_URL}}"/>
+  <meta property="og:image" content="{{OG_IMAGE}}"/>
+
+  <!-- JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Electrician",
+    "name": "Top Tier Electrical",
+    "url": "https://{{SITE_DOMAIN}}",
+    "telephone": "{{PHONE_NUMBER}}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{STREET_ADDRESS}}",
+      "addressLocality": "{{CITY}}",
+      "addressRegion": "{{STATE}}",
+      "postalCode": "{{ZIP_CODE}}",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+</head>
+<body class="bg-black text-white font-roboto">
+
+  <!-- HEADER -->
+  <header class="header bg-black">
+    <div class="container flex items-center justify-between py-4">
+      <a href="index.html" class="logo flex items-center text-gold text-2xl font-bold">
+        <span class="lightning-emoji mr-2">⚡</span>Top Tier Electrical
+      </a>
+      <nav class="space-x-4">
+        <a href="index.html" class="hover:text-gold">Home</a>
+        <a href="about.html" class="hover:text-gold">About</a>
+        <a href="residential.html" class="hover:text-gold">Residential</a>
+        <a href="commercial.html" class="hover:text-gold">Commercial</a>
+        <a href="emergency.html" class="hover:text-gold">Emergency</a>
+        <a href="how-to-choose-electrician.html" class="hover:text-gold">How to Choose</a>
+        <a href="gallery.html" class="hover:text-gold{{#if active == 'gallery'}} font-bold underline{{/if}}">Gallery</a>
+        <a href="contact.html" class="hover:text-gold">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  {{#if page == 'index'}}
+  <!-- HERO SECTION -->
+  <section class="container text-center py-16">
+    <img src="images/{{HERO_IMAGE}}" alt="{{HERO_ALT}}" class="mx-auto rounded-lg shadow-lg mb-8"/>
+    <h1 class="text-5xl font-extrabold mb-4">{{HERO_HEADING}}</h1>
+    <p class="text-lg md:text-xl mb-8">{{HERO_SUBHEADING}}</p>
+    <a href="contact.html" class="button-primary">Request a Free Quote</a>
+  </section>
+
+  <!-- MISSION SECTION -->
+  <section class="mission bg-black text-white py-12">
+    <h2 class="text-3xl font-bold mb-4">Our Mission</h2>
+    <p class="max-w-2xl mx-auto">
+      “This website should feel like a $50,000+ custom-built brand experience — something that instantly builds trust, shows deep care, and visually reflects the quality and pride we put into our work.”
+    </p>
+  </section>
+
+  <!-- VALUES SECTION -->
+  <section class="values container py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">What We Stand For</h2>
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div><span class="lightning-emoji">⚡</span><h3 class="text-xl font-semibold mb-2">Trust</h3><p>Reliable service you can count on.</p></div>
+      <div><span class="lightning-emoji">⚡</span><h3 class="text-xl font-semibold mb-2">Care</h3><p>We treat your home and business like our own.</p></div>
+      <div><span class="lightning-emoji">⚡</span><h3 class="text-xl font-semibold mb-2">Craftsmanship</h3><p>Precision and professionalism in every detail.</p></div>
+    </div>
+  </section>
+  {{/if}}
+
+  <!-- MAIN CONTENT -->
+  <main class="container py-16">
+    {{{PAGE_CONTENT}}}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer bg-black text-gray-400 py-8">
+    <div class="container text-center">
+      <p>&copy; 2025 Top Tier Electrical. All rights reserved.</p>
+      <p>Bonded &amp; Insured in Michigan</p>
+    </div>
+  </footer>
+</body>
+</html>
