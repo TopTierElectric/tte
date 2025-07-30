@@ -1,0 +1,46 @@
+chmod +x cleanup_and_deploy.sh
+./cleanup_and_deploy.sh
+bash
+Copy
+Edit
+#!/usr/bin/env bash
+set -euo pipefail
+
+# 1) Unzip your photos
+echo "→ Extracting Images.zip…"
+if [ -f Images.zip ]; then
+  unzip -o Images.zip -d images/
+  rm Images.zip
+else
+  echo "   ⚠️ Images.zip not found—please confirm your archive name."
+fi
+
+# 2) Remove all the [1] duplicates
+echo "→ Removing duplicate files…"
+rm -f *\[1\].html style\[1\].css favicon\[1\].ico netlify\[1\].toml premium_template\[1\].html instructions\[1\].txt
+
+# 3) Overwrite with the polished template files
+echo "→ Copying polished files into place…"
+# (Assumes you've placed our final ZIP in the repo root as final_site_complete_with_images.zip)
+unzip -o final_site_complete_with_images.zip -d .
+
+# 4) Ensure all HTML, CSS, favicon, netlify.toml are at root
+echo "→ Verifying root structure…"
+for f in index.html gallery.html services.html meet.html contact.html style.css favicon.ico netlify.toml; do
+  if [ ! -f "$f" ]; then
+    echo "   ❌ Missing $f — aborting."
+    exit 1
+  fi
+done
+if [ ! -d images ]; then
+  echo "   ❌ images/ folder missing—aborting."
+  exit 1
+fi
+
+# 5) Stage and summarize
+echo "→ Cleaning up and preparing commit…"
+git add index.html gallery.html services.html meet.html contact.html *.html style.css netlify.toml favicon.ico images/
+echo
+echo "Cleanup complete. Review the diff, then:"
+echo "  git commit -m \"Project cleanup: remove duplicates, add full site structure & images\""
+echo "  git push origin main"
